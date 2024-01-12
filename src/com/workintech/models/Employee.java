@@ -57,6 +57,17 @@ public class Employee {
         this.healthPlans = healthPlans;
     }
 
+    public void addHealthPlan(int index, String name){
+        if (index> healthPlans.length-1){
+            System.out.println("addHealthPlan: "+index+". index is not exist in health plans array");
+        }
+        else if(healthPlans[index]!=null){
+            System.out.println("addHealthPlan: "+index+". index is not empty in health plans array");
+        }else {
+            healthPlans[index] = name;
+        }
+
+    }
     @Override
     public String toString() {
         return "Employee{" +
