@@ -52,13 +52,33 @@ public class Company {
     }
 
     public void addEmployee(int index, String name){
-        if(index> developerNames.length-1){
-            System.out.println("addEmployee: "+index+". index is not exist in health plans array");
-        }else if(developerNames[index]!=null){
-            System.out.println("addEmployee: "+index+". index is not empty in health plans array");
-        }else {
-            developerNames[index] = name;
+        if(index<0){
+            System.out.println("Index cannot be negative.Typed index:"+index);
         }
+        else if(index> developerNames.length-1){
+            System.out.println("addEmployee: "+index+". index is not exist in health plans array");
+        }else {
+            try {boolean isExist=false;
+                if(Arrays.asList(developerNames).contains(name)){
+                    isExist=true;
+                    System.out.println(name+" is exist in developerNames");
+                }
+                if(!isExist){
+                    if(developerNames[index]!=null){
+                        System.out.println("addEmployee: "+index+". index is not empty in developer names array");
+                    }else{
+                        developerNames[index] = name;
+                    }
+
+                }
+
+        }catch(ArrayIndexOutOfBoundsException exception) {
+                System.out.println(index + "is an invalid index");
+            } catch (Exception exception) {
+                System.out.println("error: " + exception.getMessage());
+            }
+
+            }
     }
 
     @Override
