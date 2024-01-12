@@ -58,15 +58,31 @@ public class Employee {
     }
 
     public void addHealthPlan(int index, String name){
-        if (index> healthPlans.length-1){
+        if(index<0){
+            System.out.println("Index cannot be negative.Typed index:"+index);
+        }
+        else if (index> healthPlans.length-1){
             System.out.println("addHealthPlan: "+index+". index is not exist in health plans array");
-        }
-        else if(healthPlans[index]!=null){
-            System.out.println("addHealthPlan: "+index+". index is not empty in health plans array");
         }else {
-            healthPlans[index] = name;
+            try {
+                boolean isExist=false;
+                if (Arrays.asList(healthPlans).contains(name)) {
+                    isExist = true;
+                    System.out.println(name + " is exist in healthPlans");
+                }
+                if (!isExist) {
+                    if (healthPlans[index] != null) {
+                        System.out.println("addHealthPlan: " + index + ". index is not empty in health plans array");
+                    } else {
+                        healthPlans[index] = name;
+                    }
+                }
+            } catch (ArrayIndexOutOfBoundsException exception) {
+                System.out.println(index + "is an invalid index");
+            } catch (Exception exception) {
+                System.out.println("error: " + exception.getMessage());
+            }
         }
-
     }
     @Override
     public String toString() {
