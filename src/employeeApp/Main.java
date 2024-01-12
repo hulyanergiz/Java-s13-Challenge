@@ -30,10 +30,16 @@ public class Main
         System.out.println("^if last giro value is 0.0, editGiroValue method is working");
         company.setDeveloperNames(new String[] {"DEV1","DEV2","DEV3",null});
         System.out.println("developerNames array:"+Arrays.toString(company.getDeveloperNames()));
-        company.addEmployee(1,"newDev");
+        company.addEmployee(3,"DEV1");
+        System.out.println("developer names (after tyring to add an existing plan to empty index):"+Arrays.toString(company.getDeveloperNames()));
+        company.addEmployee(-1,"newDev");
+        System.out.println("developer names (after tyring to add new plan to invalid index):"+Arrays.toString(company.getDeveloperNames()));
         company.addEmployee(3,"newDev");
-        company.addEmployee(5,"newDev");
-        System.out.println("developerNames new array:"+ Arrays.toString(company.getDeveloperNames()));
+        System.out.println("developer names (after adding new plan to empty index):"+Arrays.toString(company.getDeveloperNames()));
+        company.addEmployee(1,"newDev2");
+        System.out.println("developer names (after trying to add new plan to full index):"+Arrays.toString(company.getDeveloperNames()));
+        company.addEmployee(5,"newDev2");
+        System.out.println("developerNames new array after all tests:"+ Arrays.toString(company.getDeveloperNames()));
 
 
         HealthPlan healthPlan=new HealthPlan(7,"health plan",Plan.PLAN1);
@@ -46,8 +52,6 @@ public class Main
         healthPlan.setPlan(Plan.PLAN3);
         System.out.println("new plan:"+healthPlan.getPlan());
 
-        HealthPlan healthPlan2=new HealthPlan(8,"health plan 2", Plan.PLAN2);
-
 
         Employee employee= new Employee(5,"Ali Veli","ali@veli.com","12345", null);
         System.out.println("--------EMPLOYEE--------");
@@ -58,10 +62,16 @@ public class Main
         System.out.println("employee new fullName:"+employee.getFullName());
         employee.setHealthPlans(new String[] {null,"healthPlan1","healthPlan2","healthPlan3"});
         System.out.println("employee healthplans:"+Arrays.toString(employee.getHealthPlans()));
+        employee.addHealthPlan(0,"healthPlan2");
+        System.out.println("employee healthplans (after tyring to add an existing plan to empty index):"+Arrays.toString(employee.getHealthPlans()));
+        employee.addHealthPlan(-1,"new health Plan");
+        System.out.println("employee healthplans (after tyring to add new plan to invalid index):"+Arrays.toString(employee.getHealthPlans()));
         employee.addHealthPlan(0,"new Health Plan");
-        employee.addHealthPlan(3,"new Health Plan");
-        employee.addHealthPlan(5,"new Health Plan");
-        System.out.println("new employee healthPlans:"+Arrays.toString(employee.getHealthPlans()));
+        System.out.println("employee healthplans (after adding new plan to empty index):"+Arrays.toString(employee.getHealthPlans()));
+        employee.addHealthPlan(3,"new Health Plan2");
+        System.out.println("employee healthplans (after trying to add new plan to full index):"+Arrays.toString(employee.getHealthPlans()));
+        employee.addHealthPlan(5,"new Health Plan2");
+        System.out.println("new employee healthPlans after all tests:"+Arrays.toString(employee.getHealthPlans()));
     }
 
     /**
